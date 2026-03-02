@@ -1,0 +1,857 @@
+/* ═══════════════════════════════════════════════════════════════
+   Corvanta Group — Custom Brand Styles
+   Headings : Plus Jakarta Sans
+   Body     : Inter
+   Primary  : #1D49A6  |  Secondary : #142467  |  Accent : #489CD3
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ─── Google Fonts: Plus Jakarta Sans (headings) + Inter (body) ─ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+
+/* ─── Brand CSS Variables ────────────────────────────────────── */
+:root {
+    --cv-primary:   #1D49A6;
+    --cv-secondary: #142467;
+    --cv-accent:    #489CD3;
+    --cv-gradient:  linear-gradient(135deg, #142467 0%, #1D49A6 60%, #489CD3 100%);
+    --cv-gradient-overlay: linear-gradient(135deg, rgba(20,36,103,0.85) 0%, rgba(29,73,166,0.65) 60%, rgba(72,156,211,0.40) 100%);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   GLOBAL FONTS
+   Headings → Plus Jakarta Sans
+   Body / UI → Inter
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+}
+
+/* Body, nav, forms, everything else */
+body,
+p, a, li, ul, ol, span, label,
+input, textarea, select, button,
+.toptitle, .e-date, time,
+nav, .menu-holder, .mobile-wrap,
+blockquote, cite, figcaption {
+    font-family: 'Inter', sans-serif !important;
+}
+
+/* ─── Heading weights ─── */
+h1, h2 {
+    font-weight: 700 !important;
+    letter-spacing: -0.01em !important;
+}
+h1.big {
+    font-weight: 800 !important;
+    letter-spacing: -0.02em !important;
+    line-height: 1.1 !important;
+}
+h3, h4, h5 {
+    font-weight: 700 !important;
+}
+h6 {
+    font-weight: 600 !important;
+}
+
+/* ─── Body text ─── */
+p {
+    font-weight: 400 !important;
+    font-size: 0.925rem !important;
+    line-height: 1.7 !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   TOPTITLE LABELS
+   ═══════════════════════════════════════════════════════════════ */
+.toptitle {
+    color: var(--cv-accent) !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 0.7rem !important;
+    letter-spacing: 0.16em !important;
+    text-transform: uppercase !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   FIXED HEADER
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Fix header to top — out of document flow on all pages */
+#header {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    width: 100%;
+    background: #ffffff;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.07);
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+/* Pages with a hero image — transparent overlay on fixed header */
+#header.transparent--fixed {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* After scroll on any page — solid white + brand shadow */
+#header.moove {
+    background: #ffffff !important;
+    box-shadow: 0 2px 28px rgba(20, 36, 103, 0.14) !important;
+}
+
+/* ─── Compensate for fixed header on text-only page headers ─── */
+/* .page-header (text) — push down by header height             */
+/* .page-header--image and .slider-pageheader are NOT affected   */
+.page-header {
+    margin-top: 80px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   NAVIGATION LAYOUT  —  Logo (left) | Nav (center) | CTA (right)
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Step 1: Remove the template's fixed 40px horizontal padding so the
+   nav can control its own inset (top/bottom 1.25rem is preserved) */
+#header [class|="wrap-header"] {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/* Step 2: Give the nav Bootstrap-container behaviour — same max-widths,
+   auto side margins, and 15px inner padding as every .container below */
+nav.main-navigation {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+@media (min-width: 576px)  { nav.main-navigation { max-width: 540px; } }
+@media (min-width: 768px)  { nav.main-navigation { max-width: 720px; } }
+@media (min-width: 992px)  { nav.main-navigation { max-width: 960px; } }
+@media (min-width: 1200px) { nav.main-navigation { max-width: 1140px; } }
+
+/* Logo — takes the left third, content left-aligned */
+#logo {
+    flex: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+}
+
+/* Nav links — centred, does not expand */
+#main-menu {
+    flex: 0 0 auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* CTA buttons — takes the right third, content right-aligned */
+.header-cta {
+    flex: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 10px !important;
+}
+
+/* Hide desktop CTA strip on mobile — it lives inside the mobile menu instead */
+@media (max-width: 991px) {
+    .header-cta {
+        display: none !important;
+    }
+}
+
+/* ─── Mobile menu CTA buttons (below Contact link) ─── */
+.mobile-cta-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 24px 28px;
+}
+.mobile-cta-btn {
+    display: block !important;
+    text-align: center !important;
+    padding: 12px 24px !important;
+    justify-content: center !important;
+    width: 100%;
+}
+
+/* ─── Nav link styles ─── */
+.menu-holder ul > li > a {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 500 !important;
+    font-size: 0.85rem !important;
+    letter-spacing: 0.02em !important;
+    text-transform: none !important;
+}
+.menu-holder ul > li > a.active {
+    color: var(--cv-primary) !important;
+}
+.menu-holder ul > li > a:hover {
+    color: var(--cv-primary) !important;
+}
+
+/* Mobile menu active/hover */
+#mobile-menu .main-links--border li a.active,
+#mobile-menu .main-links--border li a:hover {
+    color: var(--cv-primary) !important;
+}
+/* Mobile menu accent border */
+#mobile-menu .main-links--border {
+    border-color: rgba(29, 73, 166, 0.15) !important;
+}
+
+/* ─── Header CTA buttons ─── */
+.btn--header--outline,
+.btn--header--solid {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 20px;
+    border-radius: 100px;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 0.82rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.01em !important;
+    text-decoration: none !important;
+    line-height: 1;
+    white-space: nowrap;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Outlined button — default (solid header) */
+.btn--header--outline {
+    background: transparent;
+    color: var(--cv-primary) !important;
+    border: 1.5px solid var(--cv-primary);
+}
+.btn--header--outline:hover {
+    background: var(--cv-primary) !important;
+    color: #ffffff !important;
+}
+
+/* Solid filled button — default (solid header) */
+.btn--header--solid {
+    background: var(--cv-primary);
+    color: #ffffff !important;
+    border: 1.5px solid var(--cv-primary);
+}
+.btn--header--solid:hover {
+    background: var(--cv-secondary) !important;
+    border-color: var(--cv-secondary) !important;
+    color: #ffffff !important;
+}
+
+/* On transparent hero pages — invert to white until scrolled */
+#header.transparent--fixed:not(.moove) .btn--header--outline {
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.65);
+}
+#header.transparent--fixed:not(.moove) .btn--header--outline:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-color: #ffffff;
+}
+#header.transparent--fixed:not(.moove) .btn--header--solid {
+    background: #ffffff;
+    border-color: #ffffff;
+    color: var(--cv-primary) !important;
+}
+#header.transparent--fixed:not(.moove) .btn--header--solid:hover {
+    background: rgba(255, 255, 255, 0.88) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   BUTTONS
+   ═══════════════════════════════════════════════════════════════ */
+/* Primary solid buttons */
+.btn--big--round,
+.btn--big--arrow--round,
+.btn--medium--round,
+.btn--big--round--border {
+    background-color: var(--cv-primary) !important;
+    border-color: var(--cv-primary) !important;
+    color: #fff !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 0.82rem !important;
+    letter-spacing: 0.04em !important;
+    text-transform: none !important;
+    transition: all 0.3s ease !important;
+}
+.btn--big--round:hover,
+.btn--big--arrow--round:hover,
+.btn--medium--round:hover,
+.btn--big--round--border:hover {
+    background-color: var(--cv-secondary) !important;
+    border-color: var(--cv-secondary) !important;
+    transform: translateY(-1px);
+}
+/* Light outlined buttons (on dark backgrounds) */
+.btn--big--round--border--light,
+.btn--big--border--light--round {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 0.82rem !important;
+    letter-spacing: 0.04em !important;
+    text-transform: none !important;
+    transition: all 0.3s ease !important;
+}
+.btn--big--round--border--light:hover,
+.btn--big--border--light--round:hover {
+    background-color: var(--cv-accent) !important;
+    border-color: var(--cv-accent) !important;
+    color: #fff !important;
+    transform: translateY(-1px);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   TEXT LINKS
+   ═══════════════════════════════════════════════════════════════ */
+.simple--underline,
+.simple--arrow {
+    color: var(--cv-primary) !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 500 !important;
+    font-size: 0.85rem !important;
+    letter-spacing: 0.01em !important;
+}
+.simple--underline::after,
+.simple--arrow::after {
+    background-color: var(--cv-accent) !important;
+}
+.simple--underline:hover,
+.simple--arrow:hover {
+    color: var(--cv-secondary) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SEPARATORS
+   ═══════════════════════════════════════════════════════════════ */
+.separator-element--lg--center {
+    border-top-color: var(--cv-accent) !important;
+    opacity: 0.4;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ICON ELEMENTS
+   ═══════════════════════════════════════════════════════════════ */
+.icon-element--round--box--border .icon > i,
+.icon-element--center .icon > i,
+.ilight,
+.feather {
+    color: var(--cv-accent) !important;
+}
+.icon-element--round--box--border {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+.icon-element--round--box--border:hover {
+    border-color: var(--cv-accent) !important;
+    box-shadow: 0 8px 30px rgba(29, 73, 166, 0.12) !important;
+}
+.icon-element--round--box--border:hover .icon > i,
+.icon-element--round--box--border:hover .ilight {
+    color: var(--cv-primary) !important;
+}
+/* Centre icon elements (used in stats) */
+.icon-element--center .text h2 {
+    color: var(--cv-primary) !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-weight: 800 !important;
+    font-size: 2.2rem !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PRODUCT / PROJECT CARDS
+   ═══════════════════════════════════════════════════════════════ */
+.icon--br--square--secondary {
+    background-color: var(--cv-primary) !important;
+    transition: background-color 0.3s ease !important;
+}
+.icon--br--square--secondary i {
+    color: #fff !important;
+}
+.square-element--project:hover .icon--br--square--secondary {
+    background-color: var(--cv-accent) !important;
+}
+.square-element--project {
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+.square-element--project:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 12px 40px rgba(20, 36, 103, 0.15) !important;
+}
+
+/* Ensure text inside product cards has breathing room */
+.square-element--project .text {
+    padding: 18px 20px 22px !important;
+}
+.square-element--project .text h3 {
+    font-size: 1rem !important;
+    line-height: 1.45 !important;
+    margin-bottom: 8px !important;
+}
+.square-element--project .text p {
+    font-size: 0.875rem !important;
+    margin-bottom: 12px !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   CAROUSEL / PORTFOLIO NAVIGATION
+   ═══════════════════════════════════════════════════════════════ */
+.navigation-element--border--round--light .nav--prev,
+.navigation-element--border--round--light .nav--next {
+    transition: all 0.3s ease !important;
+}
+.navigation-element--border--round--light .nav--prev:hover,
+.navigation-element--border--round--light .nav--next:hover {
+    background-color: var(--cv-primary) !important;
+    border-color: var(--cv-primary) !important;
+    color: #fff !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   data-bg="template" — Stats, CTA backgrounds → brand gradient
+   ═══════════════════════════════════════════════════════════════ */
+[data-bg="template"] {
+    background: var(--cv-gradient) !important;
+}
+[data-bg="template"] .toptitle {
+    color: rgba(255, 255, 255, 0.65) !important;
+}
+[data-bg="template"] h2,
+[data-bg="template"] h6 {
+    color: #fff !important;
+}
+[data-bg="template"] p {
+    color: rgba(255, 255, 255, 0.78) !important;
+}
+[data-bg="template"] .icon-element--center .text h2 {
+    color: #fff !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-size: 2.2rem !important;
+    font-weight: 800 !important;
+}
+[data-bg="template"] .icon-element--center .text h6 {
+    color: rgba(255,255,255,0.9) !important;
+}
+[data-bg="template"] .icon-element--center .text p {
+    color: rgba(255,255,255,0.65) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   CTA BOX
+   ═══════════════════════════════════════════════════════════════ */
+.ctabox-element--center--round--light {
+    background: var(--cv-gradient) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   BLOCKQUOTE
+   ═══════════════════════════════════════════════════════════════ */
+.blockquote-element--primary {
+    border-left-color: var(--cv-accent) !important;
+}
+.blockquote-element--primary::before {
+    color: var(--cv-accent) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LIST ELEMENT (checkmarks / bullets)
+   ═══════════════════════════════════════════════════════════════ */
+.list-element--plus ul li::before {
+    color: var(--cv-primary) !important;
+    border-color: var(--cv-primary) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   BLOG / ARTICLE META
+   ═══════════════════════════════════════════════════════════════ */
+.e-date,
+time.e-date {
+    color: var(--cv-accent) !important;
+    font-weight: 600 !important;
+}
+.categories li a {
+    color: var(--cv-primary) !important;
+    font-weight: 600 !important;
+}
+.categories li a:hover {
+    color: var(--cv-secondary) !important;
+}
+/* Article body intro heading */
+.sectiontitle-element--full h2 {
+    color: var(--cv-secondary) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ARTICLE CARD HOVER + PADDING
+   ═══════════════════════════════════════════════════════════════ */
+.rectangle-element--article--wide {
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+.rectangle-element--article--wide:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 12px 36px rgba(20, 36, 103, 0.13) !important;
+}
+
+/* Ensure text inside article cards has breathing room */
+.rectangle-element--article--wide .text {
+    padding: 20px 20px 22px !important;
+}
+.rectangle-element--article--wide .text h3 {
+    font-size: 1rem !important;
+    line-height: 1.45 !important;
+    margin-bottom: 8px !important;
+}
+.rectangle-element--article--wide .text p {
+    font-size: 0.875rem !important;
+    margin-bottom: 12px !important;
+}
+
+/* Blog section on homepage — ensure section has consistent vertical padding */
+section.blog-section-home {
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   VIDEO / PLAY BUTTON
+   ═══════════════════════════════════════════════════════════════ */
+.icon--xl--white--shadow--round--white i {
+    color: var(--cv-primary) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   FOOTER  —  white background
+   ═══════════════════════════════════════════════════════════════ */
+#footer {
+    background-color: #ffffff !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Headings */
+#footer h6 {
+    color: var(--cv-secondary) !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 0.78rem !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+}
+
+/* Body / description text */
+#footer p,
+#footer .logo-footer p {
+    color: #555e7a !important;
+    font-size: 0.875rem !important;
+    line-height: 1.7 !important;
+}
+
+/* Nav links */
+#footer .list-element--text ul li a,
+#footer .info-footer p {
+    color: #555e7a !important;
+    font-size: 0.875rem !important;
+}
+#footer .list-element--text ul li a:hover {
+    color: var(--cv-primary) !important;
+}
+
+/* Inline bottom links (privacy / cookie) */
+#footer .list-element--text--inline ul li a {
+    color: #888 !important;
+    font-size: 0.78rem !important;
+}
+#footer .list-element--text--inline ul li a:hover {
+    color: var(--cv-primary) !important;
+}
+
+/* Copyright */
+#footer .down .text p {
+    color: #888 !important;
+    font-size: 0.78rem !important;
+}
+
+/* Bottom border */
+#footer .down.border {
+    border-top-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Social icons */
+#footer .social-element--small ul li a {
+    color: var(--cv-primary) !important;
+    border-color: rgba(29, 73, 166, 0.2) !important;
+}
+#footer .social-element--small ul li a:hover {
+    background-color: var(--cv-primary) !important;
+    border-color: var(--cv-primary) !important;
+    color: #ffffff !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PAGE HEADER (non-image, text only)
+   ═══════════════════════════════════════════════════════════════ */
+.page-header {
+    border-bottom: 3px solid rgba(72, 156, 211, 0.25);
+}
+.page-header h1.big {
+    color: var(--cv-secondary) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   COLOURED SECTION ACCENT — grey bg sections get a top accent line
+   ═══════════════════════════════════════════════════════════════ */
+[data-bg="grey"] {
+    position: relative;
+}
+[data-bg="grey"]::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0; left: 0;
+    width: 80px;
+    height: 3px;
+    background: var(--cv-gradient);
+    border-radius: 0 0 3px 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   HERO SLIDER — 3-Slide Swiper
+   ═══════════════════════════════════════════════════════════════ */
+.slider-pageheader {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 620px;
+    overflow: hidden;
+}
+
+.slider-pageheader .swiper-wrapper {
+    height: 100%;
+}
+
+/* Each slide fills the full container */
+.slider-pageheader .swiper-slide,
+.slider-pageheader .hero-slide {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+/* Full-bleed background image per slide */
+.hero-slide-bg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    /* Subtle Ken Burns zoom effect */
+    transform: scale(1.06);
+    transition: transform 8s ease-out;
+}
+.swiper-slide-active .hero-slide-bg {
+    transform: scale(1.0);
+}
+
+/* Branded gradient overlay */
+.hero-slide-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--cv-gradient-overlay);
+    z-index: 1;
+}
+
+/* Left accent bar on slides */
+.hero-slide-overlay::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0; top: 0;
+    width: 6px;
+    height: 100%;
+    background: var(--cv-gradient);
+    opacity: 0.7;
+}
+
+/* Slide text content sits above overlay */
+.hero-slide-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding-top: 80px; /* clear fixed header */
+}
+
+/* Slide text fade-up animation */
+.swiper-slide-active .hero-slide-content .sectiontitle-element--light {
+    animation: slideContentIn 0.9s ease forwards;
+}
+@keyframes slideContentIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Swiper Navigation: buttons removed, click-zone JS handles prev/next ─── */
+/* Buttons are no longer in the DOM — these rules just suppress any remnants   */
+.slider-pageheader .swiper-button-prev,
+.slider-pageheader .swiper-button-next {
+    display: none !important;
+}
+
+/* ─── Swiper Pagination Dots ─── */
+.slider-pageheader .swiper-pagination {
+    bottom: 32px !important;
+}
+.slider-pageheader .swiper-pagination-bullet {
+    width: 10px !important;
+    height: 10px !important;
+    background: rgba(255, 255, 255, 0.40) !important;
+    opacity: 1 !important;
+    transition: all 0.35s ease !important;
+}
+.slider-pageheader .swiper-pagination-bullet-active {
+    background: var(--cv-accent) !important;
+    width: 30px !important;
+    border-radius: 5px !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE VIDEO EMBEDS (YouTube iframes)
+   ═══════════════════════════════════════════════════════════════ */
+.video-embed-responsive {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    overflow: hidden;
+    border-radius: 14px;
+    background: #000;
+    box-shadow: 0 16px 56px rgba(20, 36, 103, 0.16);
+}
+.video-embed-responsive iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   MOBILE APP IMAGES (product-detail page)
+   ═══════════════════════════════════════════════════════════════ */
+.immerse-app-images {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 20px;
+}
+.app-img-tablet {
+    width: 66%;
+    height: auto;
+    border-radius: 14px;
+    box-shadow: 0 20px 60px rgba(20, 36, 103, 0.15);
+}
+.app-img-phone {
+    width: 28%;
+    height: auto;
+    border-radius: 14px;
+    margin-top: 48px;
+    box-shadow: 0 20px 60px rgba(20, 36, 103, 0.15);
+}
+@media (max-width: 575px) {
+    .immerse-app-images { flex-direction: column; align-items: center; }
+    .app-img-tablet { width: 90%; }
+    .app-img-phone  { width: 60%; margin-top: 0; }
+}
+
+/* ─── Station section label badge ─── */
+.station-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 14px;
+    border-radius: 100px;
+    background: rgba(29, 73, 166, 0.08);
+    color: var(--cv-primary);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    border: 1px solid rgba(29, 73, 166, 0.15);
+}
+
+/* Slide counter badge (optional visual polish) */
+.hero-slide-number {
+    position: absolute;
+    bottom: 36px;
+    right: 40px;
+    z-index: 10;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+}
+
+/* ─── Responsive hero height ─── */
+@media (max-width: 768px) {
+    .slider-pageheader {
+        height: 100svh;
+        min-height: 520px;
+    }
+    .hero-slide-content {
+        padding-top: 70px;
+    }
+    .slider-pageheader .swiper-button-prev,
+    .slider-pageheader .swiper-button-next {
+        display: none !important;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   COLOURFUL CLIENTS SECTION ICONS
+   ═══════════════════════════════════════════════════════════════ */
+.icon-element--center .info {
+    transition: transform 0.3s ease;
+}
+.icon-element--center:hover .info {
+    transform: translateY(-3px);
+}
+.icon-element--center .text p.f500 {
+    color: var(--cv-primary) !important;
+    font-weight: 700 !important;
+}
+.icon-element--center .text p.sm {
+    color: var(--cv-accent) !important;
+    font-size: 0.78rem !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   BRAND ACCENT UTILITY CLASSES
+   ═══════════════════════════════════════════════════════════════ */
+.cv-accent-bar {
+    display: block;
+    width: 48px;
+    height: 4px;
+    background: var(--cv-gradient);
+    border-radius: 2px;
+    margin-bottom: 20px;
+}
+.text-cv-accent { color: var(--cv-accent) !important; }
+.text-cv-primary { color: var(--cv-primary) !important; }
+.bg-cv-gradient { background: var(--cv-gradient) !important; }
