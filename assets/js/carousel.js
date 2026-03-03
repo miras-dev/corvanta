@@ -3,165 +3,58 @@ var $ = jQuery.noConflict();
 (function($) {
     "use strict";
 
-    try {
-        var owlPortfolio = $('.portfolio-carousel');
-
-        owlPortfolio.owlCarousel({
+    // ── Owl Carousel instances ──────────────────────────────────────────────
+    // Each entry: carousel selector, navigation wrapper selector, desktop item
+    // count, and responsive breakpoints.  All other options are shared.
+    var carouselConfigs = [
+        {
+            carousel: '.portfolio-carousel',
+            nav: '.portfolio-wrap',
             items: 3,
-            lazyLoad: true,
-            loop: true,
-            margin: 30,
-            dots: false,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                415: {
-                    items: 2
-                },
-                768: {
-                    items: 3
-                }
-            }
-        });
-        $('.portfolio-wrap .navigation .nav--prev').on('click', function() {
-            owlPortfolio.trigger('prev.owl.carousel', [800]);
-        });
-        $('.portfolio-wrap .navigation .nav--next').on('click', function() {
-            owlPortfolio.trigger('next.owl.carousel', [800]);
-        });
-
-    } catch (err) {
-
-    };
-
-    try {
-        var owlTestimonials = $('.testimonials-carousel');
-        owlTestimonials.owlCarousel({
+            responsive: { 0: { items: 1 }, 415: { items: 2 }, 768: { items: 3 } }
+        },
+        {
+            carousel: '.testimonials-carousel',
+            nav: '.testimonials-wrap',
             items: 2,
-            lazyLoad: true,
-            loop: true,
-            margin: 30,
-            dots: false,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                415: {
-                    items: 1
-                },
-                768: {
-                    items: 1
-                },
-                992: {
-                    items: 2
-                }
-            }
-        });
-        $('.testimonials-wrap .navigation .nav--prev').on('click', function() {
-            owlTestimonials.trigger('prev.owl.carousel', [800]);
-        });
-        $('.testimonials-wrap .navigation .nav--next').on('click', function() {
-            owlTestimonials.trigger('next.owl.carousel', [800]);
-        });
-    } catch (err) {
-
-    };
-
-    try {
-        var owlTeam = $('.team-carousel');
-        owlTeam.owlCarousel({
+            responsive: { 0: { items: 1 }, 415: { items: 1 }, 768: { items: 1 }, 992: { items: 2 } }
+        },
+        {
+            carousel: '.team-carousel',
+            nav: '.team-wrap',
             items: 4,
-            lazyLoad: true,
-            loop: true,
-            margin: 30,
-            dots: false,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                415: {
-                    items: 2
-                },
-                768: {
-                    items: 3
-                },
-                992: {
-                    items: 4
-                }
-            }
-        });
-        $('.team-wrap .navigation .nav--prev').on('click', function() {
-            owlTeam.trigger('prev.owl.carousel', [800]);
-        });
-        $('.team-wrap .navigation .nav--next').on('click', function() {
-            owlTeam.trigger('next.owl.carousel', [800]);
-        });
-    } catch (err) {
-
-    };
-    try {
-        var owlGallery = $('.gallery-carousel');
-        owlGallery.owlCarousel({
+            responsive: { 0: { items: 1 }, 415: { items: 2 }, 768: { items: 3 }, 992: { items: 4 } }
+        },
+        {
+            carousel: '.gallery-carousel',
+            nav: '.gallery-wrap',
             items: 2,
-            lazyLoad: true,
-            loop: true,
-            margin: 30,
-            dots: false,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                415: {
-                    items: 1
-                },
-                768: {
-                    items: 2
-                },
-                992: {
-                    items: 2
-                }
-            }
-        });
-        $('.gallery-wrap .navigation .nav--prev').on('click', function() {
-            owlGallery.trigger('prev.owl.carousel', [800]);
-        });
-        $('.gallery-wrap .navigation .nav--next').on('click', function() {
-            owlGallery.trigger('next.owl.carousel', [800]);
-        });
-    } catch (err) {
-
-    };
-    try {
-        var owlArticles = $('.articles-carousel');
-        owlArticles.owlCarousel({
+            responsive: { 0: { items: 1 }, 415: { items: 1 }, 768: { items: 2 }, 992: { items: 2 } }
+        },
+        {
+            carousel: '.articles-carousel',
+            nav: '.articles-wrap',
             items: 3,
+            responsive: { 0: { items: 1 }, 415: { items: 2 }, 768: { items: 3 } }
+        }
+    ];
+
+    carouselConfigs.forEach(function(cfg) {
+        var $owl = $(cfg.carousel);
+        if (!$owl.length) { return; }
+        $owl.owlCarousel({
+            items: cfg.items,
             lazyLoad: true,
             loop: true,
             margin: 30,
             dots: false,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                415: {
-                    items: 2
-                },
-                768: {
-                    items: 3
-                }
-            }
+            responsive: cfg.responsive
         });
-        $('.articles-wrap .navigation .nav--prev').on('click', function() {
-            owlArticles.trigger('prev.owl.carousel', [800]);
-        });
-        $('.articles-wrap .navigation .nav--next').on('click', function() {
-            owlArticles.trigger('next.owl.carousel', [800]);
-        });
-    } catch (err) {
+        $(cfg.nav + ' .navigation .nav--prev').on('click', function() { $owl.trigger('prev.owl.carousel', [800]); });
+        $(cfg.nav + ' .navigation .nav--next').on('click', function() { $owl.trigger('next.owl.carousel', [800]); });
+    });
 
-    };
-
+    // ── Single-image carousel (separate options — not part of the shared loop) ──
     try {
         var owlImages = $('.images-carousel');
         owlImages.owlCarousel({
@@ -179,6 +72,7 @@ var $ = jQuery.noConflict();
 
     };
 
+    // ── Swiper hero slider ──────────────────────────────────────────────────
     try {
         var mySwiper = new Swiper('.slider-pageheader', {
             direction: 'horizontal',
@@ -198,36 +92,51 @@ var $ = jQuery.noConflict();
             },
         });
 
-        // Click-zone navigation: left half = prev, right half = next
-        // Ignored when clicking on links, buttons, or pagination dots
+        // Click-zone navigation: left half = prev, right half = next.
+        // Ignored when clicking on links, buttons, or pagination dots.
         var $slider = $('.slider-pageheader');
+
+        // Cache slider geometry — recomputed only on resize, not on every event.
+        var sliderWidth = $slider.outerWidth();
+        var sliderLeft  = $slider.offset().left;
+        var lastCursor  = '';
+
+        $(window).on('resize.slider', function() {
+            sliderWidth = $slider.outerWidth();
+            sliderLeft  = $slider.offset().left;
+        });
 
         $slider.on('click', function(e) {
             if ($(e.target).closest('a, button, .swiper-pagination, .swiper-pagination-bullet').length) {
                 return;
             }
-            var halfWidth = $slider.outerWidth() / 2;
-            var clickX   = e.pageX - $slider.offset().left;
-            if (clickX < halfWidth) {
+            if (e.pageX - sliderLeft < sliderWidth / 2) {
                 mySwiper.slidePrev();
             } else {
                 mySwiper.slideNext();
             }
         });
 
-        // Show directional cursor as the mouse moves across the banner
+        // Show directional cursor as the mouse moves across the banner.
+        // Only write to the DOM when the cursor value actually changes.
         $slider.on('mousemove', function(e) {
             if ($(e.target).closest('a, button, .swiper-pagination').length) {
-                $slider.css('cursor', 'default');
+                if (lastCursor !== 'default') {
+                    $slider.css('cursor', 'default');
+                    lastCursor = 'default';
+                }
                 return;
             }
-            var halfWidth = $slider.outerWidth() / 2;
-            var mouseX   = e.pageX - $slider.offset().left;
-            $slider.css('cursor', mouseX < halfWidth ? 'w-resize' : 'e-resize');
+            var cursor = (e.pageX - sliderLeft) < sliderWidth / 2 ? 'w-resize' : 'e-resize';
+            if (cursor !== lastCursor) {
+                $slider.css('cursor', cursor);
+                lastCursor = cursor;
+            }
         });
 
         $slider.on('mouseleave', function() {
             $slider.css('cursor', '');
+            lastCursor = '';
         });
 
     } catch (err) {
