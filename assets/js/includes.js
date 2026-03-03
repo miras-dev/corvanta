@@ -80,7 +80,7 @@ var $ = jQuery.noConflict();
 
         // ── Refresh AOS so the footer fade-in animation fires ────────────
         if (typeof AOS !== 'undefined') {
-            AOS.refreshHard();
+            AOS.refresh();
         }
 
         // ── Reinitialize menu ────────────────────────────────────────────
