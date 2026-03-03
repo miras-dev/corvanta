@@ -6,8 +6,7 @@ var $ = jQuery.noConflict();
     var is_mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
         navigator.userAgent
     );
-    var $widthR = $(window).width(),
-        $root = $('html, body');
+    var $root = $('html, body');
 
     /*-------------------------------------------------*/
     /* =  Lazy Loader
@@ -63,7 +62,7 @@ var $ = jQuery.noConflict();
 
             if (width >= 1199) {
                 offset = -60;
-            } else if (width < 1199) {
+            } else {
                 offset = -40;
             }
 
@@ -204,7 +203,7 @@ var $ = jQuery.noConflict();
     $("a[href*='html'], a[href='/']").on("click", function(event) {
         event.preventDefault();
         $('body').removeClass('visible');
-        var url = $(this)[0]['href'];
+        var url = this.href;
         setTimeout(function() {
             window.location.href = url;
         }, 400);

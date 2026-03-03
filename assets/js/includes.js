@@ -62,7 +62,7 @@ var $ = jQuery.noConflict();
         $('#header a[href*=".html"], #footer a[href*=".html"]').on('click', function (event) {
             event.preventDefault();
             $('body').removeClass('visible');
-            var url = $(this)[0]['href'];
+            var url = this.href;
             setTimeout(function () {
                 window.location.href = url;
             }, 400);
