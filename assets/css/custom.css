@@ -693,7 +693,8 @@ section.blog-section-home {
     position: relative;
     z-index: 2;
     width: 100%;
-    padding-top: 80px; /* clear fixed header */
+    padding-top: 80px;  /* clear fixed header */
+    padding-bottom: 80px; /* balance top offset so text centres in the slide */
 }
 
 /* Slide text fade-up animation */
@@ -816,6 +817,7 @@ section.blog-section-home {
     }
     .hero-slide-content {
         padding-top: 70px;
+        padding-bottom: 70px;
     }
     .slider-pageheader .swiper-button-prev,
     .slider-pageheader .swiper-button-next {

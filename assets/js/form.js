@@ -11,7 +11,7 @@ var $ = jQuery.noConflict();
         var submitContact = $('#contact-form'),
             message = $('[class*="alert-wrap"]');
 
-        submitContact.on('click', function(e) {
+        submitContact.on('submit', function(e) {
             e.preventDefault();
             var $this = $(this);
             submitContact.find("input, textarea, select").attr('data-error', 'false');
@@ -24,7 +24,6 @@ var $ = jQuery.noConflict();
                 data: $('#contact-form').serialize(),
                 success: function(data) {
 
-                    console.log(data);
                     if (data.info !== 'error') {
                         submitContact.find("[class*='field']").hide();
                         message.find('p').text(data.msg);

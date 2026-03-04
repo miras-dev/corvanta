@@ -12,17 +12,10 @@ var $ = jQuery.noConflict();
             var $simpleFilters = $('[data-isotope-filters] ul');
 
             $simpleFilters.on('click', 'li', function() {
-                var filterValue = $(this).attr('data-filter');
-                $container.isotope({
-                    filter: filterValue
-                });
-            });
-            $simpleFilters.each(function(i, buttonGroup) {
-                var $buttonGroup = $(buttonGroup);
-                $buttonGroup.on('click', 'li', function() {
-                    $buttonGroup.find('.is-checked').removeClass('is-checked');
-                    $(this).addClass('is-checked');
-                });
+                var $li = $(this);
+                $li.closest('ul').find('.is-checked').removeClass('is-checked');
+                $li.addClass('is-checked');
+                $container.isotope({ filter: $li.attr('data-filter') });
             });
 
         });
@@ -54,26 +47,19 @@ var $ = jQuery.noConflict();
         var $masonryContainerF = $('[data-isotope="fmasonry"] .row');
         $masonryContainerF.imagesLoaded(function() {
             $masonryContainerF.isotope({
-                itemSelector: '[data-isotope="masonry"] [class*="element"]',
+                itemSelector: '[data-isotope="fmasonry"] [class*="element"]',
                 layoutMode: 'masonry',
                 masonry: {
-                    columnWidth: '[data-isotope="masonry"] [class*="element"]',
+                    columnWidth: '[data-isotope="fmasonry"] [class*="element"]',
                     gutter: 18
                 }
             });
             var $masonryFiltersF = $('[data-isotope-filters] ul');
             $masonryFiltersF.on('click', 'li', function() {
-                var filterValueF = $(this).attr('data-filter');
-                $masonryContainerF.isotope({
-                    filter: filterValueF
-                });
-            });
-            $masonryFiltersF.each(function(i, buttonGroup) {
-                var $buttonGroup = $(buttonGroup);
-                $buttonGroup.on('click', 'li', function() {
-                    $buttonGroup.find('.is-checked').removeClass('is-checked');
-                    $(this).addClass('is-checked');
-                });
+                var $li = $(this);
+                $li.closest('ul').find('.is-checked').removeClass('is-checked');
+                $li.addClass('is-checked');
+                $masonryContainerF.isotope({ filter: $li.attr('data-filter') });
             });
 
         });
