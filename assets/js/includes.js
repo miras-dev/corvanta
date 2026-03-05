@@ -97,6 +97,28 @@ var $ = jQuery.noConflict();
         );
     });
 
+    // ── Load blog related articles header if placeholder exists ───────────
+    var $blogRelatedHeaderPlaceholder = $('#blog-related-header-placeholder');
+    if ($blogRelatedHeaderPlaceholder.length) {
+        $.get('includes/blog-related-header.html').done(function (html) {
+            $blogRelatedHeaderPlaceholder.replaceWith(html);
+
+            // Apply page transition handler to injected links
+            $('#blog-related-header a[href*=".html"]').on('click', function (event) {
+                event.preventDefault();
+                $('body').removeClass('visible');
+                var url = this.href;
+                setTimeout(function () {
+                    window.location.href = url;
+                }, 400);
+            });
+
+            if (typeof AOS !== 'undefined') {
+                AOS.refresh();
+            }
+        });
+    }
+
     // ── Menu initialization ──────────────────────────────────────────────
     function initMenu() {
         try {
