@@ -706,6 +706,12 @@ section.blog-section-home {
     to   { opacity: 1; transform: translateY(0); }
 }
 
+/* Disable interaction on hidden (non-active) slides so their invisible buttons
+   cannot intercept clicks — required when effect: 'fade' stacks all slides in DOM */
+.slider-pageheader .swiper-slide:not(.swiper-slide-active) {
+    pointer-events: none;
+}
+
 /* ─── Swiper Arrow Navigation (desktop) ─────────────────────────────────── */
 .slider-pageheader .swiper-button-prev,
 .slider-pageheader .swiper-button-next {
