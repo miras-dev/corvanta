@@ -90,56 +90,38 @@ var $ = jQuery.noConflict();
                 el: '.swiper-pagination',
                 clickable: true,
             },
+            navigation: {
+                prevEl: '.swiper-button-prev',
+                nextEl: '.swiper-button-next',
+            },
         });
 
-        // Click-zone navigation: left half = prev, right half = next.
-        // Ignored when clicking on links, buttons, or pagination dots.
-        var $slider = $('.slider-pageheader');
-
-        // Cache slider geometry — recomputed only on resize, not on every event.
-        var sliderWidth = $slider.outerWidth();
-        var sliderLeft  = $slider.offset().left;
-        var lastCursor  = '';
-
-        $(window).on('resize.slider', function() {
-            sliderWidth = $slider.outerWidth();
-            sliderLeft  = $slider.offset().left;
-        });
-
-        $slider.on('click', function(e) {
-            if ($(e.target).closest('a, button, .swiper-pagination, .swiper-pagination-bullet').length) {
-                return;
-            }
-            if (e.pageX - sliderLeft < sliderWidth / 2) {
-                mySwiper.slidePrev();
-            } else {
-                mySwiper.slideNext();
-            }
-        });
-
-        // Show directional cursor as the mouse moves across the banner.
-        // Only write to the DOM when the cursor value actually changes.
-        $slider.on('mousemove', function(e) {
-            if ($(e.target).closest('a, button, .swiper-pagination').length) {
-                if (lastCursor !== 'default') {
-                    $slider.css('cursor', 'default');
-                    lastCursor = 'default';
-                }
-                return;
-            }
-            var cursor = (e.pageX - sliderLeft) < sliderWidth / 2 ? 'w-resize' : 'e-resize';
-            if (cursor !== lastCursor) {
-                $slider.css('cursor', cursor);
-                lastCursor = cursor;
-            }
-        });
-
-        $slider.on('mouseleave', function() {
-            $slider.css('cursor', '');
-            lastCursor = '';
-        });
+        // Navigation is handled by the Swiper prev/next arrow buttons.
 
     } catch (err) {
 
     };
+
+    // ── Clients logo ticker ──────────────────────────────────────────────────
+    try {
+        new Swiper('.clients-logos-carousel', {
+            slidesPerView: 7,
+            spaceBetween: 24,
+            loop: true,
+            speed: 5000,
+            autoplay: {
+                delay: 0,
+                disableOnInteraction: false,
+            },
+            breakpoints: {
+                0:   { slidesPerView: 2, spaceBetween: 16 },
+                576: { slidesPerView: 3, spaceBetween: 20 },
+                768: { slidesPerView: 4, spaceBetween: 24 },
+                992: { slidesPerView: 7, spaceBetween: 24 },
+            },
+        });
+    } catch (err) {
+
+    };
+
 })(jQuery);

@@ -706,11 +706,23 @@ section.blog-section-home {
     to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ─── Swiper Navigation: buttons removed, click-zone JS handles prev/next ─── */
-/* Buttons are no longer in the DOM — these rules just suppress any remnants   */
+/* ─── Swiper Arrow Navigation (desktop) ─────────────────────────────────── */
 .slider-pageheader .swiper-button-prev,
 .slider-pageheader .swiper-button-next {
-    display: none !important;
+    color: #fff;
+    opacity: 0.7;
+    transition: opacity 0.25s ease;
+}
+.slider-pageheader .swiper-button-prev:hover,
+.slider-pageheader .swiper-button-next:hover {
+    opacity: 1;
+}
+/* Hidden on mobile — swipe gesture is sufficient */
+@media (max-width: 768px) {
+    .slider-pageheader .swiper-button-prev,
+    .slider-pageheader .swiper-button-next {
+        display: none !important;
+    }
 }
 
 /* ─── Swiper Pagination Dots ─── */
@@ -728,6 +740,48 @@ section.blog-section-home {
     background: var(--cv-accent) !important;
     width: 30px !important;
     border-radius: 5px !important;
+}
+
+/* ─── Clients Logo Ticker ────────────────────────────────────────────────── */
+.clients-logos-wrap {
+    overflow: hidden;
+    padding: 28px 0;
+}
+
+/* Force linear easing so the scroll looks like a true continuous marquee */
+.clients-logos-carousel .swiper-wrapper {
+    transition-timing-function: linear !important;
+}
+
+.clients-logos-carousel .swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90px !important;  /* fixed row height — overrides the generic swiper-slide padding */
+    padding: 0 !important;    /* strip the large top/bottom padding from style.css */
+}
+
+.clients-logos-carousel .swiper-slide figure {
+    margin: 0;
+    padding: 0 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clients-logos-carousel .swiper-slide img {
+    max-height: 64px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.55;
+    transition: filter 0.35s ease, opacity 0.35s ease;
+}
+
+.clients-logos-carousel .swiper-slide img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
 }
 
 /* ═══════════════════════════════════════════════════════════════
