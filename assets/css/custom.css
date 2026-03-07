@@ -1034,6 +1034,11 @@ section.blog-section-home {
 .text-cv-primary { color: var(--cv-primary) !important; }
 .bg-cv-gradient { background: var(--cv-gradient) !important; }
 
+/* Centre-align the form success / error message */
+[class|="basic-form"] [class*="alert-wrap"] {
+    text-align: center;
+}
+
 /* ═══════════════════════════════════════════════════════════════
    UNIFORM FIELD HEIGHT — contact form
    Locks all text inputs to the same height so nothing looks short
