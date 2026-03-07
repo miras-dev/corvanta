@@ -1033,3 +1033,86 @@ section.blog-section-home {
 .text-cv-accent { color: var(--cv-accent) !important; }
 .text-cv-primary { color: var(--cv-primary) !important; }
 .bg-cv-gradient { background: var(--cv-gradient) !important; }
+
+/* ═══════════════════════════════════════════════════════════════
+   UNIFORM FIELD HEIGHT — contact form
+   Locks all text inputs to the same height so nothing looks short
+   ═══════════════════════════════════════════════════════════════ */
+[class|="basic-form"] input.form-field {
+    height: 46px;
+    line-height: 46px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   INTL-TEL-INPUT  —  Visual integration with .form-field
+   Makes the phone flag+dial-code prefix match site form styles
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Wrapper must be full-width block to match .form-field layout */
+.iti {
+    width: 100%;
+    display: block;
+}
+
+/* Restore full width on the input — the library shrinks it to
+   accommodate the flag button via inline style */
+.iti input.form-field,
+.iti input[type="tel"] {
+    width: 100% !important;
+}
+
+/* Flag + dial-code button — must match the 46px input height exactly */
+.iti__flag-container {
+    height: 46px;
+    line-height: 46px;
+}
+
+.iti__selected-flag {
+    background-color: #F8F8F8 !important;
+    border-right: 1px solid rgba(34, 34, 34, 0.12) !important;
+    border-radius: 5px 0 0 5px !important;
+    height: 46px !important;
+    line-height: 46px !important;
+    padding: 0 8px 0 12px !important;
+    outline: none !important;
+}
+
+.iti__selected-flag:hover,
+.iti__selected-flag:focus {
+    background-color: #f0f0f0 !important;
+}
+
+/* Dial code badge — match Inter body font */
+.iti__selected-dial-code {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    color: #222222 !important;
+    margin-left: 6px !important;
+}
+
+/* Country dropdown list */
+.iti__country-list {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 13px !important;
+    border: 1px solid rgba(34, 34, 34, 0.15) !important;
+    border-radius: 5px !important;
+    box-shadow: 0 8px 24px rgba(20, 36, 103, 0.10) !important;
+    max-height: 220px !important;
+}
+
+.iti__country.iti__highlight,
+.iti__country:hover {
+    background-color: rgba(29, 73, 166, 0.06) !important;
+}
+
+/* Preferred-country separator */
+.iti__divider {
+    border-bottom-color: rgba(34, 34, 34, 0.10) !important;
+}
+
+@media screen and (max-width: 414px) {
+    .iti__selected-flag {
+        padding: 0 6px 0 8px !important;
+    }
+}

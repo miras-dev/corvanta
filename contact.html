@@ -30,6 +30,8 @@
     <meta property="og:description" content="Reach out to Corvanta Group — bring ImmerseMe to your business." />
     <meta property="og:url" content="" />
 
+    <!-- intl-tel-input v23 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@23/build/css/intlTelInput.css" />
     <!-- Custom css -->
     <link rel="stylesheet" href="assets/css/style.css" />
     <!-- Corvanta brand styles: League Spartan + brand colors -->
@@ -89,9 +91,21 @@
                                         <label for="mail">Email Address <sup>*</sup></label>
                                         <input id="mail" name="mail" type="email" placeholder="Email" class="form-field" data-error="false">
                                     </div>
-                                    <div class="field col-lg-12">
+                                    <div class="field col-lg-6">
+                                        <label for="jobtitle">Job Title</label>
+                                        <input id="jobtitle" name="jobtitle" type="text" class="form-field">
+                                    </div>
+                                    <div class="field col-lg-6">
                                         <label for="company">Company / Business Name</label>
                                         <input id="company" name="company" type="text" class="form-field">
+                                    </div>
+                                    <div class="field col-lg-6">
+                                        <label for="phone">Phone Number</label>
+                                        <input id="phone" name="phone" type="tel" class="form-field">
+                                    </div>
+                                    <div class="field col-lg-6">
+                                        <label for="country">Country</label>
+                                        <input id="country" name="country" type="text" class="form-field" placeholder="Auto-filled from phone code">
                                     </div>
                                     <div class="field col-12">
                                         <label for="message">Message <sup>*</sup></label>
@@ -134,6 +148,32 @@
     <script src="assets/js/menu.js"></script>
     <script src="assets/js/elements.js"></script>
     <script src="assets/js/masonry.js"></script>
+    <!-- intl-tel-input v23 -->
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23/build/js/intlTelInput.min.js"></script>
+    <script>
+        (function () {
+            var phoneInput = document.getElementById('phone');
+            if (!phoneInput) return;
+
+            window.iti = intlTelInput(phoneInput, {
+                initialCountry: 'ae',
+                separateDialCode: true,
+                preferredCountries: ['ae', 'sa', 'qa', 'kw', 'bh', 'om', 'gb', 'us'],
+                utilsScript: 'https://cdn.jsdelivr.net/npm/intl-tel-input@23/build/js/utils.js'
+            });
+
+            phoneInput.addEventListener('countrychange', function () {
+                var data = window.iti.getSelectedCountryData();
+                var countryField = document.getElementById('country');
+                if (countryField && data && data.name) {
+                    countryField.value = data.name;
+                }
+            });
+
+            // Pre-fill Country field on page load with the initial country (UAE)
+            phoneInput.dispatchEvent(new Event('countrychange'));
+        })();
+    </script>
     <script src="assets/js/form.js"></script>
     <!--  END Scripts  -->
 </body>

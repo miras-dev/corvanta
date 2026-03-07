@@ -16,6 +16,11 @@ var $ = jQuery.noConflict();
             var $this = $(this);
             submitContact.find("input, textarea, select").attr('data-error', 'false');
 
+            // Normalize phone to full E.164 format before serializing
+            if (window.iti) {
+                $('#phone').val(window.iti.getNumber());
+            }
+
             $.ajax({
                 type: "POST",
                 url: 'contact.php',
