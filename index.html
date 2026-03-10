@@ -17,14 +17,32 @@
     <meta name="author" content="Corvanta Group" />
 
     <!-- Favicons -->
-    <link rel="icon shortcut" href="assets/img/favicon.png" sizes="16x16" type="image/png" />
-    <link rel="icon" href="assets/img/favicon.png" sizes="32x32" type="image/png" />
-    <link rel="icon" href="assets/img/favicon.png" sizes="48x48" type="image/png" />
-    <link rel="icon" href="assets/img/favicon.png" sizes="62x62" type="image/png" />
-    <link rel="icon" href="assets/img/favicon.png" sizes="96x96" type="image/png" />
+    <link rel="icon shortcut" href="assets/img/favicon-32.png" sizes="16x16" type="image/png" />
+    <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="icon" href="assets/img/favicon-48.png" sizes="48x48" type="image/png" />
+    <link rel="icon" href="assets/img/favicon-62.png" sizes="62x62" type="image/png" />
+    <link rel="icon" href="assets/img/favicon-96.png" sizes="96x96" type="image/png" />
 
     <!-- Canonical -->
     <link rel="canonical" href="/" />
+
+    <!-- Resource hints: preconnect to critical origins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="preconnect" href="https://immerseme.tech">
+
+    <!-- Google Fonts: async non-blocking load -->
+    <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+        as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap">
+    </noscript>
+
+    <!-- Preload LCP hero image -->
+    <link rel="preload" as="image" href="/assets/img/banner/Corvanta.webp" type="image/webp" fetchpriority="high">
 
     <!-- Open Graph -->
     <meta property="og:image" content="https://corvana-grp.netlify.app/assets/img/Logo.png" />
@@ -58,7 +76,12 @@
 
                 <!--  Slide 1: Delivering Beyond Expectations  -->
                 <div class="swiper-slide hero-slide">
-                    <div class="hero-slide-bg" style="background-image: url('/assets/img//banner/Corvanta.png');">
+                    <div class="hero-slide-bg">
+                        <picture>
+                            <source srcset="/assets/img/Banner.png" type="image/webp">
+                            <img src="/assets/img/Banner.png" alt="" width="1920" height="1080" fetchpriority="high"
+                                loading="eager">
+                        </picture>
                     </div>
                     <div class="hero-slide-overlay"></div>
                     <div class="container hero-slide-content">
@@ -79,7 +102,12 @@
 
                 <!--  Slide 2: Transforming Customer Experience  -->
                 <div class="swiper-slide hero-slide">
-                    <div class="hero-slide-bg" style="background-image: url('/assets/img/banner/Immerse.jpg');"></div>
+                    <div class="hero-slide-bg">
+                        <picture>
+                            <source srcset="/assets/img/banner/Immerse.webp" type="image/webp">
+                            <img src="/assets/img/banner/Immerse.jpg" alt="" width="1920" height="1080" loading="lazy">
+                        </picture>
+                    </div>
                     <div class="hero-slide-overlay"></div>
                     <div class="container hero-slide-content">
                         <div class="row">
@@ -100,7 +128,11 @@
 
                 <!--  Slide 3: Your Partner Across the GCC  -->
                 <div class="swiper-slide hero-slide">
-                    <div class="hero-slide-bg" style="background-image: url('/assets/img/banner/Immerse2.png');">
+                    <div class="hero-slide-bg">
+                        <picture>
+                            <source srcset="/assets/img/banner/Immerse2.webp" type="image/webp">
+                            <img src="/assets/img/banner/Immerse2.jpg" alt="" width="1920" height="1080" loading="lazy">
+                        </picture>
                     </div>
                     <div class="hero-slide-overlay"></div>
                     <div class="container hero-slide-content">
@@ -282,10 +314,9 @@
                                 <div class="square-element">
                                     <div class="info">
                                         <div class="image">
-                                            <img data-unveil src="#"
-                                                data-src="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&w=800&q=80"
-                                                data-src-retina="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&w=1200&q=80"
-                                                alt="ImmerseMe VR Platform">
+                                            <img data-unveil src="#" data-src="/assets/img/ImmerseMeIcon.jpeg"
+                                                data-src-retina="/assets/img/ImmerseMeIcon.jpeg"
+                                                alt="ImmerseMe VR Platform" width="800" height="533" loading="lazy">
                                         </div>
                                     </div>
                                 </div>
@@ -382,42 +413,42 @@
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
                                 <figure><img src="https://immerseme.tech/wp-content/uploads/2025/12/l_5v2-1.png"
-                                        alt="ImmerseMe Client"></figure>
+                                        alt="ImmerseMe Client" width="200" height="64" loading="lazy"></figure>
                             </div>
                             <div class="swiper-slide">
                                 <figure><img src="https://immerseme.tech/wp-content/uploads/2025/12/l_6v2-1.png"
-                                        alt="ImmerseMe Client"></figure>
+                                        alt="ImmerseMe Client" width="200" height="64" loading="lazy"></figure>
                             </div>
                             <div class="swiper-slide">
                                 <figure><img src="https://immerseme.tech/wp-content/uploads/2025/12/l_4-1.png"
-                                        alt="ImmerseMe Client"></figure>
+                                        alt="ImmerseMe Client" width="200" height="64" loading="lazy"></figure>
                             </div>
                             <div class="swiper-slide">
                                 <figure><img src="https://immerseme.tech/wp-content/uploads/2025/12/l_3-1.png"
-                                        alt="ImmerseMe Client"></figure>
+                                        alt="ImmerseMe Client" width="200" height="64" loading="lazy"></figure>
                             </div>
                             <div class="swiper-slide">
                                 <figure><img src="https://immerseme.tech/wp-content/uploads/2025/12/l_1-1.png"
-                                        alt="ImmerseMe Client"></figure>
+                                        alt="ImmerseMe Client" width="200" height="64" loading="lazy"></figure>
                             </div>
                             <div class="swiper-slide">
                                 <figure><img
                                         src="https://immerseme.tech/wp-content/uploads/2026/02/Untitled-design-70-1024x676.png"
-                                        alt="ImmerseMe Client"></figure>
+                                        alt="ImmerseMe Client" width="200" height="64" loading="lazy"></figure>
                             </div>
                             <div class="swiper-slide">
                                 <figure><img
                                         src="https://immerseme.tech/wp-content/uploads/2026/02/DoubleTree-Logo-Color_HR-1.webp"
-                                        alt="DoubleTree"></figure>
+                                        alt="DoubleTree" width="200" height="64" loading="lazy"></figure>
                             </div>
                             <div class="swiper-slide">
                                 <figure><img src="https://immerseme.tech/wp-content/uploads/2025/12/l_2-1.png"
-                                        alt="ImmerseMe Client"></figure>
+                                        alt="ImmerseMe Client" width="200" height="64" loading="lazy"></figure>
                             </div>
                             <div class="swiper-slide">
                                 <figure><img
                                         src="https://immerseme.tech/wp-content/uploads/2026/02/Untitled-design-68-986x1024.png"
-                                        alt="ImmerseMe Client"></figure>
+                                        alt="ImmerseMe Client" width="200" height="64" loading="lazy"></figure>
                             </div>
                         </div>
                     </div>
@@ -450,7 +481,7 @@
                                         <img data-unveil src="#"
                                             data-src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&q=80"
                                             data-src-retina="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80"
-                                            alt="ImmerseMe in Healthcare">
+                                            alt="ImmerseMe in Healthcare" width="600" height="400" loading="lazy">
                                     </div>
                                     <div class="text">
 
@@ -470,7 +501,7 @@
                                         <img data-unveil src="#"
                                             data-src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=600&q=80"
                                             data-src-retina="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1200&q=80"
-                                            alt="Automotive VR">
+                                            alt="Automotive VR" width="600" height="400" loading="lazy">
                                     </div>
                                     <div class="text">
 
@@ -490,7 +521,7 @@
                                         <img data-unveil src="#"
                                             data-src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=600&q=80"
                                             data-src-retina="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1200&q=80"
-                                            alt="Six VR Content Categories">
+                                            alt="Six VR Content Categories" width="600" height="400" loading="lazy">
                                     </div>
                                     <div class="text">
 
@@ -537,20 +568,20 @@
     </div>
     <!--  END: Main Wrap  -->
     <!--  Scripts  -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.unveil.js"></script>
-    <script src="assets/js/aos.js"></script>
-    <script src="assets/js/swiper.min.js"></script>
-    <script src="assets/js/jquery.magnific-popup.min.js"></script>
-    <script src="assets/js/owl.carousel.min.js"></script>
-    <script src="assets/js/isotope.min.js"></script>
-    <script src="assets/js/imagesloaded.min.js"></script>
-    <script src="assets/js/carousel.js"></script>
-    <script src="assets/js/includes.js"></script>
-    <script src="assets/js/menu.js"></script>
-    <script src="assets/js/elements.js"></script>
-    <script src="assets/js/masonry.js"></script>
-    <script src="assets/js/form.js"></script>
+    <script defer src="assets/js/jquery.min.js"></script>
+    <script defer src="assets/js/jquery.unveil.js"></script>
+    <script defer src="assets/js/aos.js"></script>
+    <script defer src="assets/js/swiper.min.js"></script>
+    <script defer src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script defer src="assets/js/owl.carousel.min.js"></script>
+    <script defer src="assets/js/isotope.min.js"></script>
+    <script defer src="assets/js/imagesloaded.min.js"></script>
+    <script defer src="assets/js/carousel.js"></script>
+    <script defer src="assets/js/includes.js"></script>
+    <script defer src="assets/js/menu.js"></script>
+    <script defer src="assets/js/elements.js"></script>
+    <script defer src="assets/js/masonry.js"></script>
+    <script defer src="assets/js/form.js"></script>
     <!--  END Scripts  -->
 </body>
 

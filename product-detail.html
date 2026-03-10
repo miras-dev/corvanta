@@ -31,6 +31,18 @@
     <meta property="og:description"
         content="The Middle East's first AI-powered VR platform for calm, comfort, and entertainment across the Middle East." />
 
+    <!-- Resource hints: preconnect to critical origins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com">
+
+    <!-- Google Fonts: async non-blocking load -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"></noscript>
+
+    <!-- Preload LCP page header image -->
+    <link rel="preload" as="image" href="/assets/img/banner/Immerse.webp" type="image/webp" fetchpriority="high">
+
     <!-- Custom css -->
     <link rel="stylesheet" href="assets/css/style.css" />
     <!-- Corvanta brand styles -->
@@ -46,7 +58,10 @@
 
         <!--  Page Header  -->
         <div class="page-header--image" data-overlay>
-            <div class="imagebg" style="background-image: url(/assets/img/banner/Immerse.jpg);"></div>
+            <picture class="imagebg">
+                <source srcset="/assets/img/banner/Immerse.webp" type="image/webp">
+                <img src="/assets/img/banner/Immerse.jpg" alt="" width="1920" height="1080" fetchpriority="high" loading="eager">
+            </picture>
             <div class="container">
                 <div class="row">
                     <div data-aos="fade-up" class="col-12 col-lg-7">
@@ -750,20 +765,20 @@
     </div>
     <!--  Main Wrap  -->
     <!--  Scripts  -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.unveil.js"></script>
-    <script src="assets/js/aos.js"></script>
-    <script src="assets/js/swiper.min.js"></script>
-    <script src="assets/js/jquery.magnific-popup.min.js"></script>
-    <script src="assets/js/owl.carousel.min.js"></script>
-    <script src="assets/js/isotope.min.js"></script>
-    <script src="assets/js/imagesloaded.min.js"></script>
-    <script src="assets/js/carousel.js"></script>
-    <script src="assets/js/includes.js"></script>
-    <script src="assets/js/menu.js"></script>
-    <script src="assets/js/elements.js"></script>
-    <script src="assets/js/masonry.js"></script>
-    <script src="assets/js/form.js"></script>
+    <script defer src="assets/js/jquery.min.js"></script>
+    <script defer src="assets/js/jquery.unveil.js"></script>
+    <script defer src="assets/js/aos.js"></script>
+    <script defer src="assets/js/swiper.min.js"></script>
+    <script defer src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script defer src="assets/js/owl.carousel.min.js"></script>
+    <script defer src="assets/js/isotope.min.js"></script>
+    <script defer src="assets/js/imagesloaded.min.js"></script>
+    <script defer src="assets/js/carousel.js"></script>
+    <script defer src="assets/js/includes.js"></script>
+    <script defer src="assets/js/menu.js"></script>
+    <script defer src="assets/js/elements.js"></script>
+    <script defer src="assets/js/masonry.js"></script>
+    <script defer src="assets/js/form.js"></script>
     <!--  END Scripts  -->
 </body>
 
