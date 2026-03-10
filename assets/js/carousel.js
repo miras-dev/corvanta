@@ -83,7 +83,7 @@ var $ = jQuery.noConflict();
             loop: true,
             speed: 1000,
             autoplay: {
-                delay: 5500,
+                delay: 7500,
                 disableOnInteraction: false,
             },
             pagination: {
