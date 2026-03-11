@@ -56,16 +56,13 @@ var $ = jQuery.noConflict();
             $('[data-nav-section="' + section + '"] > a').addClass('active');
         }
 
-        // ── Re-apply page transition handler to injected links ───────────
-        // elements.js binds this on page load before the header exists,
-        // so nav links in the injected header need it applied here.
-        $('#header a[href*=".html"], #footer a[href*=".html"]').on('click', function (event) {
-            event.preventDefault();
-            $('body').removeClass('visible');
-            var url = this.href;
-            setTimeout(function () {
-                window.location.href = url;
-            }, 400);
+        // Nav links in injected header/footer use standard browser navigation.
+
+        // ── Prevent href="#" links (e.g. social icons) from scrolling to top ──
+        // Without this, clicking placeholder social links jumps the page to the
+        // very top, which looks like a page refresh.
+        $('#footer a[href="#"]').on('click', function (e) {
+            e.preventDefault();
         });
 
         // ── Reinitialize lazy images in footer ───────────────────────────
@@ -103,15 +100,7 @@ var $ = jQuery.noConflict();
         $.get('includes/blog-related-header.html').done(function (html) {
             $blogRelatedHeaderPlaceholder.replaceWith(html);
 
-            // Apply page transition handler to injected links
-            $('#blog-related-header a[href*=".html"]').on('click', function (event) {
-                event.preventDefault();
-                $('body').removeClass('visible');
-                var url = this.href;
-                setTimeout(function () {
-                    window.location.href = url;
-                }, 400);
-            });
+            // Blog-related-header links use standard browser navigation.
 
             if (typeof AOS !== 'undefined') {
                 AOS.refresh();

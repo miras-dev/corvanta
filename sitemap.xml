@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://corvanta-grp.com/</loc><priority>1.0</priority></url>
+  <url><loc>https://corvanta-grp.com/product.html</loc><priority>0.9</priority></url>
+  <url><loc>https://corvanta-grp.com/product-detail.html</loc><priority>0.9</priority></url>
+  <url><loc>https://corvanta-grp.com/contact.html</loc><priority>0.8</priority></url>
+  <url><loc>https://corvanta-grp.com/blog.html</loc><priority>0.8</priority></url>
+  <url><loc>https://corvanta-grp.com/blog-detail.html</loc><priority>0.7</priority></url>
+  <url><loc>https://corvanta-grp.com/blog-detail-ai.html</loc><priority>0.7</priority></url>
+  <url><loc>https://corvanta-grp.com/blog-detail-automotive.html</loc><priority>0.7</priority></url>
+  <url><loc>https://corvanta-grp.com/blog-detail-content.html</loc><priority>0.7</priority></url>
+  <url><loc>https://corvanta-grp.com/blog-detail-hotels.html</loc><priority>0.7</priority></url>
+  <url><loc>https://corvanta-grp.com/blog-detail-restaurants.html</loc><priority>0.7</priority></url>
+</urlset>

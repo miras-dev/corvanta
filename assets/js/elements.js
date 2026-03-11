@@ -197,19 +197,12 @@ var $ = jQuery.noConflict();
     } catch (err) {
 
     };
-    /*-------------------------------------------------*/
-    /* =  Transition
-    /*-------------------------------------------------*/
-    $("a[href*='html'], a[href='/']").on("click", function(event) {
-        event.preventDefault();
-        $('body').removeClass('visible');
-        var url = this.href;
-        setTimeout(function() {
-            window.location.href = url;
-        }, 400);
-    });
 })(jQuery);
 
+// Body starts with class="visible" in HTML so content is never blank.
+// This fallback ensures visibility even if the HTML class is absent.
 document.addEventListener("DOMContentLoaded", function() {
-    $('body').addClass('visible');
+    if (!document.body.classList.contains('visible')) {
+        document.body.classList.add('visible');
+    }
 });

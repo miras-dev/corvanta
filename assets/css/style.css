@@ -26,7 +26,7 @@
 @import url(../css/bootstrap/bootstrap-reboot.min.css);
 /*-------------------------------------------------*/
 /*-------------------------------------------------*/
-@import url("https://fonts.googleapis.com/css?family=Cabin:400,400i,500,500i,600,600i,700,700i&display=swap");
+/* Cabin @import removed — font overridden to Inter/Plus Jakarta Sans in custom.css */
 
 /*-------------------------------------------------*/
 /*-------------------------------------------------*/

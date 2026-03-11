@@ -17,6 +17,15 @@
     --cv-gradient-overlay: linear-gradient(135deg, rgba(20,36,103,0.85) 0%, rgba(29,73,166,0.65) 60%, rgba(72,156,211,0.40) 100%);
 }
 
+/* ─── Critical: Override theme page-transition opacity ────────── */
+/* style.css sets body{opacity:0} for a JS-driven fade — we removed that JS.
+   This ensures the page is always immediately visible, fixing NO_FCP. */
+body {
+    opacity: 1 !important;
+    transition: none !important;
+    background-color: #ffffff;
+}
+
 /* ═══════════════════════════════════════════════════════════════
    GLOBAL FONTS
    Headings → Plus Jakarta Sans
@@ -1155,10 +1164,14 @@ picture.imagebg {
     overflow: hidden;
     z-index: 0;
 }
-picture.imagebg > img {
+[class|="page-header"] picture.imagebg > img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center center;
     display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: none;
 }
