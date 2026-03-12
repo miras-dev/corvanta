@@ -1001,12 +1001,28 @@ section.blog-section-home {
         min-height: 520px;
     }
     .hero-slide-content {
-        padding-top: 70px;
-        padding-bottom: 70px;
+        padding-top: 50px;
+        padding-bottom: 50px;
     }
     .slider-pageheader .swiper-button-prev,
     .slider-pageheader .swiper-button-next {
         display: none !important;
+    }
+}
+
+/* ─── iPhone SE / very small screens ─── */
+@media (max-width: 390px) {
+    .hero-slide-content .sectiontitle-element--light h1.big,
+    .hero-slide-content .sectiontitle-element--light h2.big {
+        font-size: 2.2rem !important;
+    }
+    .hero-slide-content .sectiontitle-element--light p {
+        font-size: 0.85rem !important;
+        margin-bottom: 1rem !important;
+    }
+    .hero-slide-content {
+        padding-top: 30px;
+        padding-bottom: 30px;
     }
 }
 
