@@ -45,6 +45,16 @@
     <link rel="stylesheet" href="assets/css/style.css" />
     <!-- Corvanta brand styles: League Spartan + brand colors -->
     <link rel="stylesheet" href="assets/css/custom.css" />
+
+    <!-- Google Analytics 4 (GA4) -->
+    <!-- Replace G-XXXXXXXXXX with your actual Measurement ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX', { send_page_view: true });
+    </script>
 </head>
 
 <body class="visible">
@@ -269,6 +279,7 @@
     <script defer src="assets/js/includes.js"></script>
     <script defer src="assets/js/elements.js"></script>
     <script defer src="assets/js/form.js"></script>
+    <script defer src="assets/js/analytics.js"></script>
     <!--  END Scripts  -->
 </body>
 
