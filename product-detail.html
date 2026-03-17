@@ -57,13 +57,13 @@
     <link rel="stylesheet" href="assets/css/custom.css" />
 
     <!-- Google Analytics 4 (GA4) -->
-    <!-- Replace G-XXXXXXXXXX with your actual Measurement ID -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <!-- Replace G-4ZSER51WD3 with your actual Measurement ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4ZSER51WD3"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-        gtag('config', 'G-XXXXXXXXXX', { send_page_view: true });
+        gtag('config', 'G-4ZSER51WD3', { send_page_view: true });
     </script>
 </head>
 
@@ -76,11 +76,13 @@
 
         <!--  Page Header  -->
         <div class="page-header--image" data-overlay>
-            <picture class="imagebg">
-                <source srcset="/assets/img/banner/kid.png" type="image/webp">
-                <img src="/assets/img/banner/kid.png" alt="" width="2220" height="1280" fetchpriority="high"
-                    loading="eager">
-            </picture>
+            <div class="imagebg">
+                <video autoplay muted loop playsinline preload="auto" width="100%" height="auto"
+                    poster="/assets/Banner.MOV">
+                    <source src="/assets/Banner.MOV" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
             <div class="container">
                 <div class="row">
                     <div data-aos="fade-up" class="col-12 col-lg-7">

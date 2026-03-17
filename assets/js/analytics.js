@@ -2,7 +2,7 @@
  * Corvanta Group — Advanced GA4 Analytics
  * Tracks: CTA clicks, nav clicks, form submissions, scroll depth, outbound links
  *
- * Replace G-XXXXXXXXXX with your real GA4 Measurement ID.
+ * Replace G-4ZSER51WD3 with your real GA4 Measurement ID.
  */
 
 (function () {
@@ -49,13 +49,13 @@
         if (!el) return;
 
         var label = labelOf(el) || el.getAttribute('href') || '(unknown)';
-        var href  = el.getAttribute('href') || '';
+        var href = el.getAttribute('href') || '';
 
         gtag('event', 'cta_click', {
-            event_category : 'CTA',
-            event_label     : label,
-            destination_url : href,
-            page            : pageName()
+            event_category: 'CTA',
+            event_label: label,
+            destination_url: href,
+            page: pageName()
         });
     }, true);
 
@@ -67,10 +67,10 @@
         if (!el) return;
 
         gtag('event', 'nav_click', {
-            event_category : 'Navigation',
-            event_label     : labelOf(el) || el.getAttribute('href'),
-            destination_url : el.getAttribute('href') || '',
-            page            : pageName()
+            event_category: 'Navigation',
+            event_label: labelOf(el) || el.getAttribute('href'),
+            destination_url: el.getAttribute('href') || '',
+            page: pageName()
         });
     }, true);
 
@@ -84,20 +84,20 @@
         if (!isExternal) return;
 
         gtag('event', 'outbound_click', {
-            event_category : 'Outbound',
-            event_label     : labelOf(el) || href,
-            destination_url : href,
-            page            : pageName()
+            event_category: 'Outbound',
+            event_label: labelOf(el) || href,
+            destination_url: href,
+            page: pageName()
         });
     }, true);
 
     // ── 4. Scroll Depth ───────────────────────────────────────────────────────
     var scrollMilestones = [25, 50, 75, 90];
-    var firedMilestones  = {};
+    var firedMilestones = {};
 
     function onScroll() {
-        var scrollTop    = window.pageYOffset || document.documentElement.scrollTop;
-        var docHeight    = Math.max(
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        var docHeight = Math.max(
             document.body.scrollHeight,
             document.documentElement.scrollHeight
         ) - window.innerHeight;
@@ -111,10 +111,10 @@
                 firedMilestones[milestone] = true;
 
                 gtag('event', 'scroll_depth', {
-                    event_category : 'Engagement',
-                    event_label     : milestone + '%',
-                    scroll_percent  : milestone,
-                    page            : pageName()
+                    event_category: 'Engagement',
+                    event_label: milestone + '%',
+                    scroll_percent: milestone,
+                    page: pageName()
                 });
             }
         });
@@ -132,9 +132,9 @@
         if (!form || form.id !== 'contact-form') return;
 
         gtag('event', 'form_submit', {
-            event_category : 'Contact Form',
-            event_label     : 'Submitted',
-            page            : pageName()
+            event_category: 'Contact Form',
+            event_label: 'Submitted',
+            page: pageName()
         });
     }, true);
 
@@ -146,14 +146,14 @@
         var observer = new MutationObserver(function (mutations) {
             mutations.forEach(function (mutation) {
                 if (mutation.type === 'attributes' && mutation.attributeName === 'data-active') {
-                    var isActive  = alertWrap.getAttribute('data-active') === 'true';
+                    var isActive = alertWrap.getAttribute('data-active') === 'true';
                     var isSuccess = alertWrap.classList.contains('success');
 
                     if (isActive) {
                         gtag('event', isSuccess ? 'form_success' : 'form_error', {
-                            event_category : 'Contact Form',
-                            event_label     : isSuccess ? 'Success' : 'Error',
-                            page            : pageName()
+                            event_category: 'Contact Form',
+                            event_label: isSuccess ? 'Success' : 'Error',
+                            page: pageName()
                         });
                     }
                 }
@@ -187,9 +187,9 @@
             if (docHeight > 0 && (scrollTop / docHeight) >= 0.9) {
                 blogReadFired = true;
                 gtag('event', 'blog_post_read', {
-                    event_category : 'Content',
-                    event_label     : document.title,
-                    page            : pageName()
+                    event_category: 'Content',
+                    event_label: document.title,
+                    page: pageName()
                 });
             }
         }, { passive: true });
