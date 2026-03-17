@@ -1191,3 +1191,91 @@ picture.imagebg {
     left: 0;
     transform: none;
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   PRODUCT DETAIL — Full Video Banner (show complete video, no crop)
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Remove fixed padding so video height drives the banner */
+.page-header--image {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    isolation: isolate; /* create stacking context for overlay */
+}
+
+/* Flow imagebg div normally so video's natural height sets banner height */
+.page-header--image > div.imagebg {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 100%;
+    z-index: 0 !important;
+    line-height: 0;
+    font-size: 0;
+}
+
+/* Full-width video, natural aspect ratio — no crop on desktop */
+.page-header--image > div.imagebg video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Ensure dark overlay sits ON TOP of the video */
+.page-header--image[data-overlay]:before {
+    z-index: 1 !important;
+}
+
+/* Text/CTA content floats above the overlay near the bottom of the banner */
+.page-header--image > .container {
+    position: absolute !important;
+    bottom: 80px;
+    left: 0;
+    right: 0;
+    z-index: 2;
+}
+
+/* ── Mobile: fixed height with video covering the area ──────── */
+@media screen and (max-width: 767px) {
+    .page-header--image {
+        min-height: 520px;
+    }
+
+    /* Revert imagebg to absolute so it fills the min-height container */
+    .page-header--image > div.imagebg {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+    }
+
+    /* Video covers the banner area, centred on the top portion */
+    .page-header--image > div.imagebg video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+    }
+
+    /* Text stretches from below nav to near bottom */
+    .page-header--image > .container {
+        top: 100px;
+        bottom: 40px;
+        display: flex;
+        align-items: flex-end;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .page-header--image {
+        min-height: 480px;
+    }
+
+    .page-header--image > .container {
+        top: 80px;
+        bottom: 30px;
+    }
+}
