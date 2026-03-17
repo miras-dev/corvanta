@@ -1252,12 +1252,12 @@ picture.imagebg {
         bottom: 0 !important;
     }
 
-    /* Video covers the banner area, centred on the top portion */
+    /* Video covers the banner area, anchored to the left so left columns are visible */
     .page-header--image > div.imagebg video {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        object-position: center top;
+        object-position: left top;
     }
 
     /* Text stretches from below nav to near bottom */
