@@ -747,7 +747,7 @@ section.blog-section-home {
     width: 100%;
     overflow: hidden;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
 }
 
 /* Full-bleed background image per slide */
@@ -793,15 +793,14 @@ section.blog-section-home {
     opacity: 0.7;
 }
 
-/* Slide text content sits above overlay */
+/* Slide text content sits above overlay — top-anchored so CTA is never clipped */
 .hero-slide-content {
     position: relative;
     z-index: 2;
     width: 100%;
-    padding-top: 80px;
-    /* clear fixed header */
-    padding-bottom: 80px;
-    /* balance top offset so text centres in the slide */
+    padding-top: clamp(120px, 16vh, 180px);
+    /* 80px header + generous breathing room */
+    padding-bottom: 60px;
 }
 
 /* Slide text fade-up animation */
@@ -1137,7 +1136,7 @@ section.blog-section-home {
     }
 
     .hero-slide-content {
-        padding-top: 50px;
+        padding-top: 110px;
         padding-bottom: 50px;
     }
 
@@ -1161,7 +1160,7 @@ section.blog-section-home {
     }
 
     .hero-slide-content {
-        padding-top: 30px;
+        padding-top: 100px;
         padding-bottom: 30px;
     }
 }
