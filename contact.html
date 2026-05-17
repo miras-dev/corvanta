@@ -111,24 +111,25 @@
                     <div data-aos="fade-up" class="row align-items-lg-center">
                         <div class="col-12 col-lg-8 offset-lg-2">
                             <!--  Form  -->
-                            <form id="contact-form">
+                            <form id="contact-form" novalidate>
                                 <div class="basic-form--border--round--row">
                                     <div class="field col-lg-6">
                                         <label for="name">Your Name <sup>*</sup></label>
-                                        <input id="name" name="name" type="text" class="form-field">
+                                        <input id="name" name="name" type="text" class="form-field" maxlength="100" data-error="false">
+                                        <span class="error" data-active="false">Please enter your name.</span>
                                     </div>
                                     <div class="field col-lg-6">
                                         <label for="mail">Email Address <sup>*</sup></label>
-                                        <input id="mail" name="mail" type="email" placeholder="Email" class="form-field"
-                                            data-error="false">
+                                        <input id="mail" name="mail" type="email" placeholder="Email" class="form-field" maxlength="254" data-error="false">
+                                        <span class="error" data-active="false">Please enter a valid email address.</span>
                                     </div>
                                     <div class="field col-lg-6">
                                         <label for="jobtitle">Job Title</label>
-                                        <input id="jobtitle" name="jobtitle" type="text" class="form-field">
+                                        <input id="jobtitle" name="jobtitle" type="text" class="form-field" maxlength="100">
                                     </div>
                                     <div class="field col-lg-6">
                                         <label for="company">Company / Business Name</label>
-                                        <input id="company" name="company" type="text" class="form-field">
+                                        <input id="company" name="company" type="text" class="form-field" maxlength="150">
                                     </div>
                                     <div class="field col-lg-6">
                                         <label for="phone">Phone Number</label>
@@ -140,11 +141,12 @@
                                             placeholder="Auto-filled from phone code">
                                     </div>
                                     <div class="field col-12">
-                                        <label for="message">Message <sup>*</sup></label>
-                                        <textarea id="message" name="message" class="form-field"></textarea>
+                                        <label for="message">Message <sup>*</sup> <span id="msg-counter" style="font-weight:400;font-size:0.8em;color:#888;float:right">0 / 1000</span></label>
+                                        <textarea id="message" name="message" class="form-field" minlength="10" maxlength="1000" data-error="false"></textarea>
+                                        <span class="error" data-active="false">Please enter a message (at least 10 characters).</span>
                                     </div>
                                     <div class="alert-wrap col-12" data-active="false">
-                                        <p>For the error message see contact.php file</p>
+                                        <p></p>
                                     </div>
                                     <div class="field col-12 text-center">
                                         <input id="submit" type="submit" class="btn--big--round" value="Send Message">
